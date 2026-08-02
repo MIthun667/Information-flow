@@ -1,0 +1,38 @@
+seed: 2026
+positive_class: binary_error
+score_orientation: higher_is_greater_error_risk
+estimator:
+  type: regularized_logistic_regression
+  class_weight: balanced
+  maximum_iterations: 2000
+  regularization_values:
+    - 0.1
+    - 1.0
+    - 10.0
+  regularization_selection: nested_training_folds_only
+preprocessing:
+  scaling: training_fold_only
+  constant_removal: training_fold_only
+  label_driven_feature_selection: false
+residualization:
+  estimator: ridge
+  alpha: 1.0
+  fit_scope: training_fold_only
+  correctness_labels_used: false
+reliability:
+  descriptive_only_below: 20
+  exploratory_below: 50
+  preliminary_below: 100
+  primary_minimum: 100
+comparisons:
+  - probability
+  - length_controls
+  - probability_plus_length
+  - scalar_ifi
+  - probability_plus_scalar_ifi
+  - probability_length_scalar_ifi
+  - compact_ifi
+  - probability_plus_compact_ifi
+  - probability_length_compact_ifi
+  - probability_length_residual_scalar_ifi
+  - probability_length_residual_compact_ifi

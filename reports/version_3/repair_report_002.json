@@ -1,0 +1,253 @@
+{
+  "artifact_count": 4,
+  "artifacts": {
+    "ambignq_labels/class_count_report.json": {
+      "class_counts": {
+        "fully_correct": 8,
+        "incorrect": 942,
+        "partially_correct": 50
+      },
+      "mean_interpretation_coverage": 0.03877936507936508,
+      "mean_interpretation_precision": 0.03604285714285715,
+      "sample_count": 1000,
+      "source": "outputs/qwen_1_5b/ambignq/predictions/collection.jsonl",
+      "targets": {
+        "fully_wrong_vs_at_least_partially_correct": {
+          "negative_count": 58,
+          "positive_class": "fully_wrong",
+          "positive_count": 942,
+          "reliability_status": "preliminary"
+        },
+        "incomplete_vs_fully_complete": {
+          "negative_count": 8,
+          "positive_class": "incomplete",
+          "positive_count": 992,
+          "reliability_status": "descriptive_only"
+        }
+      },
+      "version": "v3"
+    },
+    "ambignq_labels/target_analysis.json": {
+      "targets": {
+        "fully_wrong_target": {
+          "probability_length_compact_ifi": {
+            "auprc": 0.9821328047483855,
+            "aurc": 0.8949209309582058,
+            "auroc": 0.7688520389486784,
+            "correct_count": 58,
+            "gain_over_probability_plus_length": {
+              "bootstrap_draws_requested": 2000,
+              "bootstrap_draws_valid": 2000,
+              "difference": 0.00047587671132576226,
+              "paired_bootstrap_95_ci": [
+                -0.02729199864915593,
+                0.025824074328119305
+              ]
+            },
+            "incorrect_count": 942,
+            "reliability_status": "preliminary",
+            "sample_count": 1000
+          },
+          "probability_plus_length": {
+            "auprc": 0.9826597491573027,
+            "aurc": 0.8941465086058822,
+            "auroc": 0.7683761622373526,
+            "correct_count": 58,
+            "incorrect_count": 942,
+            "reliability_status": "preliminary",
+            "sample_count": 1000
+          },
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ]
+        },
+        "incomplete_target": {
+          "probability_length_compact_ifi": {
+            "auprc": 0.9992575961394352,
+            "aurc": 0.9742536065009836,
+            "auroc": 0.9143145161290323,
+            "correct_count": 8,
+            "gain_over_probability_plus_length": {
+              "bootstrap_draws_requested": 2000,
+              "bootstrap_draws_valid": 1997,
+              "difference": -0.02230342741935487,
+              "paired_bootstrap_95_ci": [
+                -0.04394746459570591,
+                -0.0018346081637356049
+              ]
+            },
+            "incorrect_count": 992,
+            "reliability_status": "descriptive_only",
+            "sample_count": 1000
+          },
+          "probability_plus_length": {
+            "auprc": 0.9994593067716058,
+            "aurc": 0.9730185794653583,
+            "auroc": 0.9366179435483871,
+            "correct_count": 8,
+            "incorrect_count": 992,
+            "reliability_status": "descriptive_only",
+            "sample_count": 1000
+          },
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ]
+        }
+      },
+      "version": "v3"
+    },
+    "ambignq_labels_v2/class_count_report.json": {
+      "automatic_label_status": "provisional_pending_manual_audit",
+      "class_counts": {
+        "fully_correct": 8,
+        "incorrect": 903,
+        "partially_correct": 39
+      },
+      "manual_audit_disagreement_rate": null,
+      "manual_audit_label_precision": null,
+      "mean_interpretation_coverage": 0.03877936507936508,
+      "mean_interpretation_precision": 0.03604285714285715,
+      "sample_count": 1000,
+      "source": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/outputs/qwen_1_5b/ambignq/predictions/collection.jsonl",
+      "targets": {
+        "fully_wrong_vs_at_least_partially_correct": {
+          "negative_count": 47,
+          "positive_class": "fully_wrong",
+          "positive_count": 903,
+          "reliability_status": "exploratory"
+        },
+        "incomplete_vs_fully_complete": {
+          "negative_count": 8,
+          "positive_class": "incomplete",
+          "positive_count": 942,
+          "reliability_status": "descriptive_only"
+        }
+      },
+      "unresolved_count": 50,
+      "version": "v3"
+    },
+    "ambignq_labels_v2/target_analysis.json": {
+      "continuous_coverage_ranking": {
+        "coverage_quality_aurc": 0.9273108492192375,
+        "risk_at_80_percent_coverage": 0.9535432330827066,
+        "risk_at_90_percent_coverage": 0.9587050960735171,
+        "sample_count": 950,
+        "spearman_p_value": 8.425574578124525e-10,
+        "spearman_uncertainty_vs_negative_coverage": 0.19739834748325905,
+        "unresolved_excluded_count": 50
+      },
+      "targets": {
+        "fully_wrong_target": {
+          "probability_length_compact_ifi": {
+            "auprc": 0.9840191962286806,
+            "aurc": 0.9071318744561218,
+            "auroc": 0.7617633891755613,
+            "brier_score": 0.18038124075988782,
+            "correct_count": 47,
+            "coverage_at_10_percent_risk": 0.0010526315789473684,
+            "coverage_at_5_percent_risk": 0.0010526315789473684,
+            "expected_calibration_error_10_bin": 0.30169772934429495,
+            "gain_over_probability_plus_length": {
+              "bootstrap_draws_requested": 2000,
+              "bootstrap_draws_valid": 2000,
+              "difference": -0.011003510756108503,
+              "paired_bootstrap_95_ci": [
+                -0.044606053476176015,
+                0.018636080942291064
+              ]
+            },
+            "incorrect_count": 903,
+            "negative_log_likelihood": 0.5361902682901007,
+            "reliability_status": "exploratory",
+            "risk_at_80_percent_coverage": 0.9381578947368421,
+            "risk_at_90_percent_coverage": 0.9450292397660819,
+            "sample_count": 950
+          },
+          "probability_plus_length": {
+            "auprc": 0.985573787338768,
+            "aurc": 0.9088909958815147,
+            "auroc": 0.7727668999316698,
+            "brier_score": 0.19047314786779937,
+            "correct_count": 47,
+            "coverage_at_10_percent_risk": 0.0,
+            "coverage_at_5_percent_risk": 0.0,
+            "expected_calibration_error_10_bin": 0.3145666813817515,
+            "incorrect_count": 903,
+            "negative_log_likelihood": 0.5562331319184796,
+            "reliability_status": "exploratory",
+            "risk_at_80_percent_coverage": 0.9381578947368421,
+            "risk_at_90_percent_coverage": 0.9450292397660819,
+            "sample_count": 950
+          },
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ]
+        },
+        "incomplete_target": {
+          "probability_length_compact_ifi": {
+            "auprc": 0.9991994712696899,
+            "aurc": 0.9746649396995851,
+            "auroc": 0.9120222929936306,
+            "brier_score": 0.055326224735315,
+            "correct_count": 8,
+            "coverage_at_10_percent_risk": 0.0,
+            "coverage_at_5_percent_risk": 0.0,
+            "expected_calibration_error_10_bin": 0.09181584672357691,
+            "gain_over_probability_plus_length": {
+              "bootstrap_draws_requested": 2000,
+              "bootstrap_draws_valid": 2000,
+              "difference": -0.030254777070063743,
+              "paired_bootstrap_95_ci": [
+                -0.05378159400186855,
+                -0.007163581510837988
+              ]
+            },
+            "incorrect_count": 942,
+            "negative_log_likelihood": 0.17722580173762265,
+            "reliability_status": "descriptive_only",
+            "risk_at_80_percent_coverage": 0.9894736842105263,
+            "risk_at_90_percent_coverage": 0.9906432748538012,
+            "sample_count": 950
+          },
+          "probability_plus_length": {
+            "auprc": 0.9994847797748904,
+            "aurc": 0.97132350932778,
+            "auroc": 0.9422770700636943,
+            "brier_score": 0.08697693209148838,
+            "correct_count": 8,
+            "coverage_at_10_percent_risk": 0.0,
+            "coverage_at_5_percent_risk": 0.0,
+            "expected_calibration_error_10_bin": 0.1357045335694487,
+            "incorrect_count": 942,
+            "negative_log_likelihood": 0.26092673434614555,
+            "reliability_status": "descriptive_only",
+            "risk_at_80_percent_coverage": 0.9894736842105263,
+            "risk_at_90_percent_coverage": 0.9906432748538012,
+            "sample_count": 950
+          },
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ]
+        }
+      },
+      "version": "v3"
+    }
+  },
+  "version": "v3"
+}

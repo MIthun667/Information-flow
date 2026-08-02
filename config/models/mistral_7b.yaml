@@ -1,0 +1,17 @@
+model_key: mistral_7b
+identifier: mistralai/Mistral-7B-Instruct-v0.3
+condition: non_qwen_7b
+layer_position_normalization: relative_depth_0_to_1
+hidden_dimension_policy: retain_native
+calibration_required: true
+benchmarks:
+  - squad
+  - gsm8k
+  - truthfulqa_mc
+  - triviaqa
+resource_accounting:
+  - generation_seconds
+  - extraction_seconds
+  - peak_gpu_memory_bytes
+  - forward_pass_count
+  - storage_bytes_per_example

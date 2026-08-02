@@ -1,0 +1,63 @@
+model:
+  identifier: Qwen/Qwen2.5-1.5B-Instruct
+  frozen: true
+  batch_size: 1
+  dtype_policy: bfloat16_when_supported
+generation:
+  decoding: greedy
+  sampling: false
+  fine_tuning: false
+  prompt_version: v1
+  prompt_versions:
+    ifi_arith: reasoning_answer_only_1
+    gsm8k: gsm8k_five_shot_concise_v4
+    squad: squad_strict_concise_v2
+    triviaqa: triviaqa_five_shot_short_v1
+    ambignq: ambignq_numbered_v3
+    truthfulqa: knowledge_concise_1
+  max_new_tokens:
+    ifi_arith: 24
+    gsm8k: 512
+    squad: 64
+    triviaqa: 24
+    ambignq: 256
+    truthfulqa: 48
+  calibration:
+    dataset: gsm8k
+    sample_count: 100
+    max_new_tokens: 512
+    maximum_truncation_rate: 0.05
+    final_answer_parsing: true
+extraction:
+  hidden_states: completed_sequence
+  transition: consecutive_layer_cosine
+  relative_transition_ablation: true
+  one_token_policy: undefined_without_imputation
+probability_features:
+  - mean_token_entropy
+  - maximum_token_entropy
+  - negative_mean_log_probability
+  - minimum_selected_token_log_probability
+  - selected_token_log_probability_std
+length_controls:
+  - prompt_token_count
+  - generated_token_count
+  - response_character_count
+  - token_limit_reached
+compact_ifi_features:
+  - scalar_ifi
+  - mean_token_instability
+  - maximum_token_instability
+  - token_instability_slope
+  - token_instability_roughness
+  - early_layer_transition_mean
+  - middle_layer_transition_mean
+  - late_layer_transition_mean
+  - normalized_peak_transition_layer
+  - layer_profile_roughness
+secondary_ablations:
+  - layer_profile_32
+  - relative_transitions
+  - individual_token_dynamics
+  - individual_layer_regions
+duplicate_note: scalar_ifi equals token_instability_std, so the latter is excluded.

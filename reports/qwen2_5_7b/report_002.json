@@ -1,0 +1,1505 @@
+{
+  "calibration_gates": {
+    "ambignq": {
+      "accuracy": 0.06,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 6,
+      "dataset": "ambignq",
+      "full_available_records": 1000,
+      "gate_passed": false,
+      "gate_reasons": [
+        "projected_minority_below_100"
+      ],
+      "incorrect_count": 94,
+      "minority_class_count": 6,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 1667,
+      "projected_minority_class_at_available_size": 60.0,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "gsm8k": {
+      "accuracy": 0.86,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 86,
+      "dataset": "gsm8k",
+      "full_available_records": 1319,
+      "gate_passed": true,
+      "gate_reasons": [
+        "passed"
+      ],
+      "incorrect_count": 14,
+      "minority_class_count": 14,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 1,
+      "parsing_failure_rate": 0.01,
+      "projected_full_collection_size": 715,
+      "projected_minority_class_at_available_size": 184.66000000000003,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "ifi_arith_larger_integer": {
+      "accuracy": 0.67,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 67,
+      "dataset": "ifi_arith_larger_integer",
+      "full_available_records": 1000,
+      "gate_passed": true,
+      "gate_reasons": [
+        "passed"
+      ],
+      "incorrect_count": 33,
+      "minority_class_count": 33,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 304,
+      "projected_minority_class_at_available_size": 329.99999999999994,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "ifi_arith_moderate_multiplicative": {
+      "accuracy": 0.98,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 98,
+      "dataset": "ifi_arith_moderate_multiplicative",
+      "full_available_records": 1000,
+      "gate_passed": false,
+      "gate_reasons": [
+        "projected_minority_below_100"
+      ],
+      "incorrect_count": 2,
+      "minority_class_count": 2,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 1,
+      "parsing_failure_rate": 0.01,
+      "projected_full_collection_size": 5000,
+      "projected_minority_class_at_available_size": 20.000000000000018,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "ifi_arith_source": {
+      "accuracy": 0.95,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 95,
+      "dataset": "ifi_arith_source",
+      "full_available_records": 1000,
+      "gate_passed": false,
+      "gate_reasons": [
+        "projected_minority_below_100"
+      ],
+      "incorrect_count": 5,
+      "minority_class_count": 5,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 2000,
+      "projected_minority_class_at_available_size": 50.00000000000004,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "squad": {
+      "accuracy": 0.29,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 29,
+      "dataset": "squad",
+      "full_available_records": 1500,
+      "gate_passed": false,
+      "gate_reasons": [
+        "truncation_above_5_percent"
+      ],
+      "incorrect_count": 71,
+      "minority_class_count": 29,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 345,
+      "projected_minority_class_at_available_size": 434.99999999999994,
+      "requested_records": 100,
+      "truncation_count": 18,
+      "truncation_rate": 0.18,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "triviaqa": {
+      "accuracy": 0.67,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 67,
+      "dataset": "triviaqa",
+      "full_available_records": 2000,
+      "gate_passed": true,
+      "gate_reasons": [
+        "passed"
+      ],
+      "incorrect_count": 33,
+      "minority_class_count": 33,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 304,
+      "projected_minority_class_at_available_size": 659.9999999999999,
+      "requested_records": 100,
+      "truncation_count": 1,
+      "truncation_rate": 0.01,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    },
+    "truthfulqa_mc": {
+      "accuracy": 0.22,
+      "artifact_failure_count": 0,
+      "collected_records": 100,
+      "correct_count": 22,
+      "dataset": "truthfulqa_mc",
+      "full_available_records": 790,
+      "gate_passed": true,
+      "gate_reasons": [
+        "passed"
+      ],
+      "incorrect_count": 78,
+      "minority_class_count": 22,
+      "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+      "model_key": "qwen2_5_7b",
+      "parsing_failure_count": 0,
+      "parsing_failure_rate": 0.0,
+      "projected_full_collection_size": 455,
+      "projected_minority_class_at_available_size": 173.8,
+      "requested_records": 100,
+      "truncation_count": 0,
+      "truncation_rate": 0.0,
+      "unresolved_count": 0,
+      "valid_ifi_signatures": 100,
+      "valid_predictions": 100,
+      "version": "qwen_7b_suite_v1"
+    }
+  },
+  "datasets": {
+    "gsm8k": {
+      "analyses": {
+        "clean_strict.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.48429785340332954,
+              "aurc": 0.04796813832922911,
+              "auroc": 0.8146162657502865,
+              "brier_score": 0.1685102394204483,
+              "correct_count": 1125,
+              "coverage_at_10_percent_risk": 0.8824867323730099,
+              "coverage_at_5_percent_risk": 0.643669446550417,
+              "expected_calibration_error_10_bin": 0.23419861082176618,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.029869415807560085,
+                "paired_bootstrap_95_ci": [
+                  0.006274884468456088,
+                  0.05459883446124335
+                ]
+              },
+              "incorrect_count": 194,
+              "negative_log_likelihood": 0.5149504589494024,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.08049242424242424,
+              "risk_at_90_percent_coverage": 0.10353535353535354,
+              "sample_count": 1319,
+              "seed_aurocs": [
+                0.815262313860252,
+                0.815069873997709,
+                0.8167239404352806,
+                0.8077892325315006,
+                0.8046185567010309
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.4922812184614411,
+              "aurc": 0.05164260010215603,
+              "auroc": 0.8088797250859107,
+              "brier_score": 0.16617361208108955,
+              "correct_count": 1125,
+              "coverage_at_10_percent_risk": 0.8961334344200151,
+              "coverage_at_5_percent_risk": 0.5943896891584534,
+              "expected_calibration_error_10_bin": 0.22764438278025503,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.024132875143184296,
+                "paired_bootstrap_95_ci": [
+                  -0.00013463641694980703,
+                  0.04953176791860141
+                ]
+              },
+              "incorrect_count": 194,
+              "negative_log_likelihood": 0.509507988829832,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.08143939393939394,
+              "risk_at_90_percent_coverage": 0.10185185185185185,
+              "sample_count": 1319,
+              "seed_aurocs": [
+                0.8038258877434135,
+                0.8079495990836199,
+                0.8101260022909507,
+                0.7984192439862543,
+                0.7973195876288661
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.46179974522084183,
+              "aurc": 0.05397011571895921,
+              "auroc": 0.8016036655211913,
+              "brier_score": 0.17259909111519958,
+              "correct_count": 1125,
+              "coverage_at_10_percent_risk": 0.8749052312357847,
+              "coverage_at_5_percent_risk": 0.5655799848369977,
+              "expected_calibration_error_10_bin": 0.24194153085212816,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.016856815578464968,
+                "paired_bootstrap_95_ci": [
+                  -0.0031795703357311274,
+                  0.037751503894733085
+                ]
+              },
+              "incorrect_count": 194,
+              "negative_log_likelihood": 0.528115884041038,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.08143939393939394,
+              "risk_at_90_percent_coverage": 0.10774410774410774,
+              "sample_count": 1319,
+              "seed_aurocs": [
+                0.8035876288659793,
+                0.7968980526918672,
+                0.8042657502863688,
+                0.7934707903780068,
+                0.7933516609392897
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.4304358736399545,
+              "aurc": 0.05773734908396416,
+              "auroc": 0.7847468499427264,
+              "brier_score": 0.18222477892347866,
+              "correct_count": 1125,
+              "coverage_at_10_percent_risk": 0.869598180439727,
+              "coverage_at_5_percent_risk": 0.4245640636846095,
+              "expected_calibration_error_10_bin": 0.26095551840698766,
+              "incorrect_count": 194,
+              "negative_log_likelihood": 0.5534579296519052,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.08333333333333333,
+              "risk_at_90_percent_coverage": 0.10606060606060606,
+              "sample_count": 1319,
+              "seed_aurocs": [
+                0.7863963344788086,
+                0.7823230240549829,
+                0.7838029782359679,
+                0.783963344788087,
+                0.78171363115693
+              ]
+            }
+          },
+          "dataset": "gsm8k",
+          "excluded_truncated_count": 0,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": null
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "825882b4357370dd18352a64906129412bbc52ab5b84f97ce022aa9b5609f8b7",
+          "predictions": "bba67273c7a61630b00d51be26af826bbbb65a600138ee18167b574f6fc0bb94",
+          "signature_ablations": "2239ed8651ef438300cd9b465894a4dce86e9f6161fc05bdd30accf85366036b"
+        },
+        "experiment_id": "qwen_compact_c85c0b0dce2a928f"
+      },
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:03:14.698970+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_c85c0b0dce2a928f",
+        "final_answer_window_tokens": 32,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/outputs/models/qwen2_5_7b/manifests/gsm8k_full.jsonl",
+        "manifest_checksum": "03424d4ae39bf588435dabf2bf6d2c00f88c2e9107560f0df6a837dcf2d7a200",
+        "max_new_tokens": {
+          "ambignq": 192,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 48,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "16dac5d1a7d3f182b98b6383d051bfa47479d6498eb7615a9d310405c02706a6",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambiguity_interpretations_1",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "context_unanswerable_1",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_on_final_answer_line": true
+      }
+    },
+    "ifi_arith_larger_integer": {
+      "analyses": {
+        "clean_strict.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.9302349212927821,
+              "aurc": 0.10645991125868824,
+              "auroc": 0.9608483691008696,
+              "brier_score": 0.07466442724441788,
+              "correct_count": 606,
+              "coverage_at_10_percent_risk": 0.617,
+              "coverage_at_5_percent_risk": 0.564,
+              "expected_calibration_error_10_bin": 0.03585562407991053,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.004653130287648133,
+                "paired_bootstrap_95_ci": [
+                  -0.003102628126293258,
+                  0.012322021966363918
+                ]
+              },
+              "incorrect_count": 394,
+              "negative_log_likelihood": 0.25713143850846204,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.25375,
+              "risk_at_90_percent_coverage": 0.3277777777777778,
+              "sample_count": 1000,
+              "seed_aurocs": [
+                0.9594411217771524,
+                0.960375098423548,
+                0.961024275016334,
+                0.9598683218575664,
+                0.9605593808111776
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.93251226172009,
+              "aurc": 0.10568588850742507,
+              "auroc": 0.9623393811462365,
+              "brier_score": 0.07267865535278664,
+              "correct_count": 606,
+              "coverage_at_10_percent_risk": 0.624,
+              "coverage_at_5_percent_risk": 0.566,
+              "expected_calibration_error_10_bin": 0.0329367272779803,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.006144142333015079,
+                "paired_bootstrap_95_ci": [
+                  -0.001488526209225724,
+                  0.013620973824792135
+                ]
+              },
+              "incorrect_count": 394,
+              "negative_log_likelihood": 0.252574786775186,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.2525,
+              "risk_at_90_percent_coverage": 0.3277777777777778,
+              "sample_count": 1000,
+              "seed_aurocs": [
+                0.9616943927895328,
+                0.9612294985843762,
+                0.9607604161431372,
+                0.9628922283091254,
+                0.9607687926153021
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.9289544622312168,
+              "aurc": 0.10822275725956337,
+              "auroc": 0.9579794273843627,
+              "brier_score": 0.07896415212924722,
+              "correct_count": 606,
+              "coverage_at_10_percent_risk": 0.615,
+              "coverage_at_5_percent_risk": 0.555,
+              "expected_calibration_error_10_bin": 0.057601031693722875,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.0017841885711412653,
+                "paired_bootstrap_95_ci": [
+                  -0.003399020720036178,
+                  0.0069152867801435276
+                ]
+              },
+              "incorrect_count": 394,
+              "negative_log_likelihood": 0.2764761104072059,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.2525,
+              "risk_at_90_percent_coverage": 0.33,
+              "sample_count": 1000,
+              "seed_aurocs": [
+                0.9577909567606507,
+                0.9579375450235378,
+                0.9581008862307551,
+                0.9576653096781759,
+                0.9564967918111609
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.9275027783321601,
+              "aurc": 0.10799102721685694,
+              "auroc": 0.9561952388132214,
+              "brier_score": 0.08491975609980691,
+              "correct_count": 606,
+              "coverage_at_10_percent_risk": 0.615,
+              "coverage_at_5_percent_risk": 0.545,
+              "expected_calibration_error_10_bin": 0.06248673715723429,
+              "incorrect_count": 394,
+              "negative_log_likelihood": 0.29944127550144173,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.25375,
+              "risk_at_90_percent_coverage": 0.33,
+              "sample_count": 1000,
+              "seed_aurocs": [
+                0.955943944648272,
+                0.9560318976060043,
+                0.9544236149503275,
+                0.9563502035482736,
+                0.9521703439379472
+              ]
+            }
+          },
+          "dataset": "ifi_arith_larger_integer",
+          "excluded_truncated_count": 0,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": null
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "3a94c90d1bbc343008e05200b0d6ddddd98562b6b4cfb94717b00fbc4cac79ef",
+          "predictions": "e51938316a2f81781977b4758f3e1230cae1c90535538afd75b5c48f221c8719",
+          "signature_ablations": "d9d08c4f41cc6dff70b31c098d332afd14d729825c304a38143295424797c095"
+        },
+        "experiment_id": "qwen_compact_3ffdb47f3df57474"
+      },
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:38:04.093952+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_3ffdb47f3df57474",
+        "final_answer_window_tokens": null,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/data/manifests/qwen_1_5b/ifi_arith_larger_integer.jsonl",
+        "manifest_checksum": "39e830bdd4696816cf7938e925498244073b859f681a80ab67b3c68bf3e6715f",
+        "max_new_tokens": {
+          "ambignq": 192,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 48,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "16dac5d1a7d3f182b98b6383d051bfa47479d6498eb7615a9d310405c02706a6",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambiguity_interpretations_1",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "context_unanswerable_1",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_on_final_answer_line": false
+      }
+    },
+    "ifi_arith_source": {
+      "analyses": {},
+      "checksums": null,
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:36:07.168494+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_bc3a0c0d53ca2ed4",
+        "final_answer_window_tokens": null,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/data/manifests/qwen_1_5b/ifi_arith_source.jsonl",
+        "manifest_checksum": "90fb9955d400204e50f80947945ce995b3dbd609fa92208a4da1b8ef2d8b29a9",
+        "max_new_tokens": {
+          "ambignq": 192,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 48,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "16dac5d1a7d3f182b98b6383d051bfa47479d6498eb7615a9d310405c02706a6",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambiguity_interpretations_1",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "context_unanswerable_1",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_on_final_answer_line": false
+      }
+    },
+    "repair_squad_v2": {
+      "analyses": {
+        "clean_strict.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.5722920762185573,
+              "aurc": 0.08942202175339249,
+              "auroc": 0.8094131915513335,
+              "brier_score": 0.1791629164792971,
+              "correct_count": 1129,
+              "coverage_at_10_percent_risk": 0.5773333333333334,
+              "coverage_at_5_percent_risk": 0.388,
+              "expected_calibration_error_10_bin": 0.17254558313546992,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.04157246233219303,
+                "paired_bootstrap_95_ci": [
+                  0.019495868989921932,
+                  0.062488216632172834
+                ]
+              },
+              "incorrect_count": 371,
+              "negative_log_likelihood": 0.5319056959429208,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.17,
+              "risk_at_90_percent_coverage": 0.19777777777777777,
+              "sample_count": 1500,
+              "seed_aurocs": [
+                0.8055765782757442,
+                0.8109912882378079,
+                0.8050298549153772,
+                0.8113112049639617,
+                0.8060230292294066
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.5819826903968479,
+              "aurc": 0.0872346112925198,
+              "auroc": 0.815458185212685,
+              "brier_score": 0.1760072705217646,
+              "correct_count": 1129,
+              "coverage_at_10_percent_risk": 0.576,
+              "coverage_at_5_percent_risk": 0.4226666666666667,
+              "expected_calibration_error_10_bin": 0.16597326102822563,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.0476174559935445,
+                "paired_bootstrap_95_ci": [
+                  0.02471665136944496,
+                  0.06976866679172722
+                ]
+              },
+              "incorrect_count": 371,
+              "negative_log_likelihood": 0.5233145313014107,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.16416666666666666,
+              "risk_at_90_percent_coverage": 0.1962962962962963,
+              "sample_count": 1500,
+              "seed_aurocs": [
+                0.8132975535920203,
+                0.8177405761843484,
+                0.805034629791887,
+                0.8140495966423068,
+                0.8119271640337202
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.5918193906672198,
+              "aurc": 0.08999898283432482,
+              "auroc": 0.8112204823102763,
+              "brier_score": 0.17844158354483647,
+              "correct_count": 1129,
+              "coverage_at_10_percent_risk": 0.556,
+              "coverage_at_5_percent_risk": 0.37866666666666665,
+              "expected_calibration_error_10_bin": 0.17517383421689314,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.04337975309113584,
+                "paired_bootstrap_95_ci": [
+                  0.021754885905579873,
+                  0.06414787000935332
+                ]
+              },
+              "incorrect_count": 371,
+              "negative_log_likelihood": 0.529554818980531,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.16416666666666666,
+              "risk_at_90_percent_coverage": 0.19777777777777777,
+              "sample_count": 1500,
+              "seed_aurocs": [
+                0.8072931463810017,
+                0.8119653630457981,
+                0.808560876094342,
+                0.812872589582652,
+                0.8104374025626762
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.543880742637773,
+              "aurc": 0.13054628394638063,
+              "auroc": 0.7678407292191405,
+              "brier_score": 0.19233665889881926,
+              "correct_count": 1129,
+              "coverage_at_10_percent_risk": 0.5626666666666666,
+              "coverage_at_5_percent_risk": 0.0006666666666666666,
+              "expected_calibration_error_10_bin": 0.201766145647081,
+              "incorrect_count": 371,
+              "negative_log_likelihood": 0.5862973932667352,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.17583333333333334,
+              "risk_at_90_percent_coverage": 0.2,
+              "sample_count": 1500,
+              "seed_aurocs": [
+                0.7633523452999698,
+                0.7678693784781992,
+                0.7686476833492893,
+                0.7692349931599894,
+                0.765147698867638
+              ]
+            }
+          },
+          "dataset": "full",
+          "excluded_truncated_count": 0,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": null
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "e5be6a3c10ea91ec467a6252541373f3c92dc834868c97125d72a76a3e2d8c0b",
+          "predictions": "9162686443136f5bf584821d3d431e928f6c2b25ada198fab705f0fb89b3112d",
+          "signature_ablations": "43a5e17600963d2c200087ecedb28afd2cb135a741803b13c9f524e0d3e48b7e"
+        },
+        "experiment_id": "qwen_compact_de38af3457c3e4c4"
+      },
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:52:02.334603+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_de38af3457c3e4c4",
+        "final_answer_window_tokens": null,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/data/manifests/qwen_1_5b/squad.jsonl",
+        "manifest_checksum": "c63e8189aa6bfe5a5b75f40434a62e4e8ac78f87306ef953cc92aa384451dc38",
+        "max_new_tokens": {
+          "ambignq": 256,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 64,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "bc7cab2438e26d8476d29fc34ee2c6eadc3c5b01630aa7c03100b5b829c4bcab",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambignq_numbered_v3",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "squad_strict_concise_v2",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_after_first_line": true,
+        "stop_on_final_answer_line": false
+      }
+    },
+    "triviaqa": {
+      "analyses": {
+        "clean_alias.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.8173353762244469,
+              "aurc": 0.20447615511310427,
+              "auroc": 0.8403835492680122,
+              "brier_score": 0.16254650851058247,
+              "correct_count": 565,
+              "coverage_at_10_percent_risk": 0.15261044176706828,
+              "coverage_at_5_percent_risk": 0.02108433734939759,
+              "expected_calibration_error_10_bin": 0.06186677559532511,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.006681313266123201,
+                "paired_bootstrap_95_ci": [
+                  -0.005474796353550276,
+                  0.019132687575932502
+                ]
+              },
+              "incorrect_count": 431,
+              "negative_log_likelihood": 0.49894236176779133,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.328732747804266,
+              "risk_at_90_percent_coverage": 0.37235228539576365,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8412582387121943,
+                0.8375377286820115,
+                0.8397634642629818,
+                0.8356364084347988,
+                0.8333203293431615
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.8131627207520525,
+              "aurc": 0.20279030853932867,
+              "auroc": 0.8378333983532841,
+              "brier_score": 0.16471829331520155,
+              "correct_count": 565,
+              "coverage_at_10_percent_risk": 0.1716867469879518,
+              "coverage_at_5_percent_risk": 0.04216867469879518,
+              "expected_calibration_error_10_bin": 0.06495854974180684,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.004131162351395101,
+                "paired_bootstrap_95_ci": [
+                  -0.009059852011364559,
+                  0.017599218485359957
+                ]
+              },
+              "incorrect_count": 431,
+              "negative_log_likelihood": 0.5014668541331052,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.32496863237139273,
+              "risk_at_90_percent_coverage": 0.3734671125975474,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8367698088413444,
+                0.8355583844937684,
+                0.8372461655339505,
+                0.8286553189741905,
+                0.8278915056567356
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.8106236231494982,
+              "aurc": 0.20675520087459068,
+              "auroc": 0.8355008931687986,
+              "brier_score": 0.16598980912185426,
+              "correct_count": 565,
+              "coverage_at_10_percent_risk": 0.23092369477911648,
+              "coverage_at_5_percent_risk": 0.06325301204819277,
+              "expected_calibration_error_10_bin": 0.07081068780434793,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.001798657166909634,
+                "paired_bootstrap_95_ci": [
+                  -0.007923077952320539,
+                  0.010904931460791453
+                ]
+              },
+              "incorrect_count": 431,
+              "negative_log_likelihood": 0.5078514501979717,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.32622333751568383,
+              "risk_at_90_percent_coverage": 0.3734671125975474,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.834375705808677,
+                0.8315914830708582,
+                0.8405231710572244,
+                0.8331807075539494,
+                0.825448124345523
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.8132777205841708,
+              "aurc": 0.2113302854201325,
+              "auroc": 0.833702236001889,
+              "brier_score": 0.16492207793586447,
+              "correct_count": 565,
+              "coverage_at_10_percent_risk": 0.0642570281124498,
+              "coverage_at_5_percent_risk": 0.025100401606425703,
+              "expected_calibration_error_10_bin": 0.07387308157208226,
+              "incorrect_count": 431,
+              "negative_log_likelihood": 0.5056064268861649,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.32747804265997493,
+              "risk_at_90_percent_coverage": 0.37235228539576365,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8358458411186168,
+                0.832696137814919,
+                0.834544073260374,
+                0.8341457405087983,
+                0.8295546475576454
+              ]
+            }
+          },
+          "dataset": "triviaqa",
+          "excluded_truncated_count": 4,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": "alias"
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "6c4f1e6bb4e455fb60a49563c84d9d0760d8337f5d0486f0895c38ece9f0c3af",
+          "predictions": "5f83d439ce336eecbdb864a15876060edae67d987fc7749b846afc5b6c4845af",
+          "signature_ablations": "af96802492c5b56f7a7aac7731d6a48a0813f728b97095e69df661afcdcc3509"
+        },
+        "experiment_id": "qwen_compact_206409d0fafdbb8d"
+      },
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:32:40.621833+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_206409d0fafdbb8d",
+        "final_answer_window_tokens": null,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/data/manifests/qwen_1_5b/triviaqa.jsonl",
+        "manifest_checksum": "486f98b182d35521aec9fbd682c2bc556d98f4fce31bd88e645652bd68cf47e6",
+        "max_new_tokens": {
+          "ambignq": 192,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 48,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "16dac5d1a7d3f182b98b6383d051bfa47479d6498eb7615a9d310405c02706a6",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambiguity_interpretations_1",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "context_unanswerable_1",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_on_final_answer_line": false
+      }
+    },
+    "triviaqa_extension": {
+      "analyses": {
+        "clean_alias.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.8684431003829662,
+              "aurc": 0.2601193822891476,
+              "auroc": 0.8489952778259451,
+              "brier_score": 0.15555903673993265,
+              "correct_count": 503,
+              "coverage_at_10_percent_risk": 0.0,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.031032174071465288,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": -0.005960182112194845,
+                "paired_bootstrap_95_ci": [
+                  -0.017416388394189304,
+                  0.005160280704552798
+                ]
+              },
+              "incorrect_count": 493,
+              "negative_log_likelihood": 0.4733985879181359,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.37641154328732745,
+              "risk_at_90_percent_coverage": 0.4403567447045708,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8458458175893926,
+                0.8458861435847391,
+                0.8459184043810163,
+                0.850632513237008,
+                0.845228829860593
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.8664206383567099,
+              "aurc": 0.2613840208414224,
+              "auroc": 0.8480153561390279,
+              "brier_score": 0.15656842771960702,
+              "correct_count": 503,
+              "coverage_at_10_percent_risk": 0.0,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.03440274162687144,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": -0.00694010379911203,
+                "paired_bootstrap_95_ci": [
+                  -0.01792957893287247,
+                  0.004114928507273293
+                ]
+              },
+              "incorrect_count": 493,
+              "negative_log_likelihood": 0.4758812713882287,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.38017565872020076,
+              "risk_at_90_percent_coverage": 0.4403567447045708,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8478419543590385,
+                0.8415148056891916,
+                0.8474104662088322,
+                0.8474548248037131,
+                0.8408534593655108
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.862903737662818,
+              "aurc": 0.24794327634750207,
+              "auroc": 0.8529189971731478,
+              "brier_score": 0.15741064569098043,
+              "correct_count": 503,
+              "coverage_at_10_percent_risk": 0.1576305220883534,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.053157830796402156,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": -0.002036462764992142,
+                "paired_bootstrap_95_ci": [
+                  -0.009492188379143732,
+                  0.005235526164439043
+                ]
+              },
+              "incorrect_count": 493,
+              "negative_log_likelihood": 0.4788411881374904,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.38143036386449186,
+              "risk_at_90_percent_coverage": 0.4403567447045708,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8535682456982245,
+                0.8518705212941418,
+                0.8495558091612597,
+                0.8515842067271826,
+                0.8498743845244962
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.866451803417657,
+              "aurc": 0.2519357138773906,
+              "auroc": 0.8549554599381399,
+              "brier_score": 0.157097722051557,
+              "correct_count": 503,
+              "coverage_at_10_percent_risk": 0.24799196787148595,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.05439731728054305,
+              "incorrect_count": 493,
+              "negative_log_likelihood": 0.4769774504272205,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.38017565872020076,
+              "risk_at_90_percent_coverage": 0.4403567447045708,
+              "sample_count": 996,
+              "seed_aurocs": [
+                0.8546247867762997,
+                0.8569556293073204,
+                0.8501486012928515,
+                0.8542255594223704,
+                0.8557539146459983
+              ]
+            }
+          },
+          "dataset": "triviaqa_extension",
+          "excluded_truncated_count": 4,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": "alias"
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "3295af63adc995c11137cd618b793d17188b8d9f857e065344bd135dd597d4cb",
+          "predictions": "956fe6fe9c874a1b73aba73e937b55770d1185f0992dcdf884f885c7eb5ea5a0",
+          "signature_ablations": "7fa32e8ba7ed2c5e5ed6aac2ff4c27fd58082396af65264dd43f82a0796c66cc"
+        },
+        "experiment_id": "qwen_compact_38340991d6a0bbaa"
+      },
+      "metadata": {
+        "compact_ifi_features": [
+          "scalar_ifi",
+          "mean_token_instability",
+          "maximum_token_instability",
+          "token_instability_slope",
+          "token_instability_roughness",
+          "early_layer_transition_mean",
+          "middle_layer_transition_mean",
+          "late_layer_transition_mean",
+          "normalized_peak_transition_layer",
+          "layer_profile_roughness"
+        ],
+        "compact_probability_features": [
+          "mean_token_entropy",
+          "maximum_token_entropy",
+          "negative_mean_log_probability",
+          "minimum_selected_token_log_probability",
+          "selected_token_log_probability_std"
+        ],
+        "creation_timestamp": "2026-07-29T13:34:16.982012+00:00",
+        "evaluator_version": "audit_rules_v3",
+        "experiment_id": "qwen_compact_38340991d6a0bbaa",
+        "final_answer_window_tokens": null,
+        "generation_config": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/config/experiments/qwen_1_5b_compact.yaml",
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/outputs/qwen_1_5b_repairs_v3/manifests/triviaqa_extension_v1.jsonl",
+        "manifest_checksum": "e059aa3b2fe06ef4f865b1a66f801a2b74c38133a56417021e09a90418c180e9",
+        "max_new_tokens": {
+          "ambignq": 192,
+          "gsm8k": 512,
+          "ifi_arith": 24,
+          "squad": 48,
+          "triviaqa": 24,
+          "truthfulqa": 48
+        },
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "one_token_policy": "undefined_without_imputation",
+        "prompt_checksum": "16dac5d1a7d3f182b98b6383d051bfa47479d6498eb7615a9d310405c02706a6",
+        "prompt_version": "v1",
+        "prompt_versions": {
+          "ambignq": "ambiguity_interpretations_1",
+          "gsm8k": "gsm8k_five_shot_concise_v4",
+          "ifi_arith": "reasoning_answer_only_1",
+          "squad": "context_unanswerable_1",
+          "triviaqa": "triviaqa_five_shot_short_v1",
+          "truthfulqa": "knowledge_concise_1"
+        },
+        "stop_on_final_answer_line": false
+      }
+    },
+    "truthfulqa_mc": {
+      "analyses": {
+        "clean_mc1.json": {
+          "analysis_version": "v2",
+          "comparisons": {
+            "probability_length_depth_dynamics": {
+              "auprc": 0.8750912836313185,
+              "aurc": 0.6323990797055244,
+              "auroc": 0.7167188990325657,
+              "brier_score": 0.21539808783192818,
+              "correct_count": 179,
+              "coverage_at_10_percent_risk": 0.0,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.2039127474230847,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.009716268198350253,
+                "paired_bootstrap_95_ci": [
+                  -0.013475683531575581,
+                  0.0328043804204853
+                ]
+              },
+              "incorrect_count": 533,
+              "negative_log_likelihood": 0.619966335043704,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.6964912280701754,
+              "risk_at_90_percent_coverage": 0.7254290171606864,
+              "sample_count": 712,
+              "seed_aurocs": [
+                0.7175154862850734,
+                0.7159432746024925,
+                0.7059754525349293,
+                0.7140671019946125,
+                0.7084700284046244
+              ]
+            },
+            "probability_length_token_and_depth": {
+              "auprc": 0.8763404474276006,
+              "aurc": 0.6249782837686445,
+              "auroc": 0.720387392958588,
+              "brier_score": 0.21427033423575628,
+              "correct_count": 179,
+              "coverage_at_10_percent_risk": 0.0014044943820224719,
+              "coverage_at_5_percent_risk": 0.0014044943820224719,
+              "expected_calibration_error_10_bin": 0.2014642011195475,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.013384762124372562,
+                "paired_bootstrap_95_ci": [
+                  -0.012266237914793626,
+                  0.039409701738343836
+                ]
+              },
+              "incorrect_count": 533,
+              "negative_log_likelihood": 0.6182440398734353,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.6982456140350877,
+              "risk_at_90_percent_coverage": 0.7269890795631825,
+              "sample_count": 712,
+              "seed_aurocs": [
+                0.7159013489576237,
+                0.7162681983502259,
+                0.7042565010953075,
+                0.7216451623046527,
+                0.7122852620876875
+              ]
+            },
+            "probability_length_token_dynamics": {
+              "auprc": 0.8748561670380579,
+              "aurc": 0.6409016950499624,
+              "auroc": 0.7102937939564182,
+              "brier_score": 0.2179901446694814,
+              "correct_count": 179,
+              "coverage_at_10_percent_risk": 0.0,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.20695429671808843,
+              "gain_over_probability_plus_length": {
+                "bootstrap_draws_requested": 2000,
+                "bootstrap_draws_valid": 2000,
+                "difference": 0.0032911631222027893,
+                "paired_bootstrap_95_ci": [
+                  -0.015136307952565828,
+                  0.023395493685019753
+                ]
+              },
+              "incorrect_count": 533,
+              "negative_log_likelihood": 0.6257752063088264,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.6964912280701754,
+              "risk_at_90_percent_coverage": 0.7285491419656787,
+              "sample_count": 712,
+              "seed_aurocs": [
+                0.7048329787122538,
+                0.7006194514029369,
+                0.701688555347092,
+                0.7129979980504575,
+                0.7081765488905425
+              ]
+            },
+            "probability_plus_length": {
+              "auprc": 0.8736123540396465,
+              "aurc": 0.643163061670427,
+              "auroc": 0.7070026308342154,
+              "brier_score": 0.21931282856771506,
+              "correct_count": 179,
+              "coverage_at_10_percent_risk": 0.0,
+              "coverage_at_5_percent_risk": 0.0,
+              "expected_calibration_error_10_bin": 0.2132501984044026,
+              "incorrect_count": 533,
+              "negative_log_likelihood": 0.6271157006781112,
+              "reliability_status": "suitable_for_primary_analysis",
+              "risk_at_80_percent_coverage": 0.6964912280701754,
+              "risk_at_90_percent_coverage": 0.7269890795631825,
+              "sample_count": 712,
+              "seed_aurocs": [
+                0.709004580376702,
+                0.7069502237781295,
+                0.6999905667299045,
+                0.7080088463110673,
+                0.6999171968513841
+              ]
+            }
+          },
+          "dataset": "truthfulqa_mc",
+          "excluded_truncated_count": 0,
+          "non_truncated_only": true,
+          "split_seeds": [
+            2026,
+            2027,
+            2028,
+            2029,
+            2030
+          ],
+          "triviaqa_label_variant": null
+        }
+      },
+      "checksums": {
+        "checksums": {
+          "compact_signatures": "a8ff14dc370115333866a1deeb445c046602fd89ddf57d32b0597fadaa39358f",
+          "predictions": "570f4aa8088888f0411ae428cb86415c431860ece2bf9fe5fc1e467ebd692a82",
+          "signature_ablations": "bd439f5b6ad3f125b65053fe677c1a5c08a3230a1e30eeb91dae0313dd68cd31"
+        },
+        "experiment_id": "truthfulqa_mc_v5_b42eea16330f11ce",
+        "version": "truthfulqa_mc_v5"
+      },
+      "metadata": {
+        "experiment_id": "truthfulqa_mc_v5_b42eea16330f11ce",
+        "generative_lexical_labels_are_primary": false,
+        "manifest": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/outputs/models/qwen2_5_7b/manifests/truthfulqa_mc_full.jsonl",
+        "model": {
+          "device": "cuda",
+          "dtype": "torch.bfloat16",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "hidden_dimension": 3584,
+          "hidden_state_layer_count": 28,
+          "model_identifier": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "platform": "Linux-6.17.0-8-generic-x86_64-with-glibc2.42",
+          "pytorch_version": "2.7.0+cu128",
+          "tokenizer_identifier": "/home/mithun-hossain/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+          "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "transformers_version": "5.5.1"
+        },
+        "protocol": "TruthfulQA MC1 best-correct versus incorrect options",
+        "version": "truthfulqa_mc_v5"
+      }
+    }
+  },
+  "model_root": "/home/mithun-hossain/Desktop/IFI/UncertaintySignature/outputs/models/qwen2_5_7b",
+  "version": "qwen_7b_report_v1"
+}

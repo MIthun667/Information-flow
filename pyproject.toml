@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usig"
+version = "0.1.0"
+description = "Dataset foundation for uncertainty-signature research"
+requires-python = ">=3.10"
+dependencies = [
+  "datasets",
+  "numpy",
+  "pyyaml",
+  "scikit-learn",
+  "scipy",
+  "torch",
+  "transformers",
+]
+
+[project.scripts]
+prepare-datasets = "usig.data.prepare:main"
+prepare-ifi-arith = "usig.data.prepare_ifi_arith:main"
+prepare-pilots = "usig.data.prepare_pilots:main"
+collect-signatures = "usig.experiment.collect_signatures:main"
+evaluate-collection = "usig.experiment.evaluate_collection:main"
+prepare-large-manifests = "usig.data.large_experiment_manifests:main"
+collect-compact-signatures = "usig.experiment.large_collection:main"
+analyze-compact-signatures = "usig.experiment.compact_analysis:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

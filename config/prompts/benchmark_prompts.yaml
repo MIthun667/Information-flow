@@ -1,0 +1,103 @@
+templates:
+  gsm8k:
+    template_id: gsm8k_five_shot_concise_v4
+    text: |
+      Solve each problem concisely and end with the required final line.
+
+      Question: Lina has 3 bags with 4 apples each. How many apples?
+      Reasoning: 3 times 4 is 12.
+      Final answer: 12
+
+      Question: A book costs $18 after a $7 discount. What was its original price?
+      Reasoning: Add the discount back: 18 plus 7 is 25.
+      Final answer: 25
+
+      Question: There are 30 students split equally into 5 groups. How many per group?
+      Reasoning: 30 divided by 5 is 6.
+      Final answer: 6
+
+      Question: Omar read 15 pages Monday and 22 Tuesday. How many pages total?
+      Reasoning: 15 plus 22 is 37.
+      Final answer: 37
+
+      Question: A tank held 50 liters and 18 liters were used. How many remain?
+      Reasoning: 50 minus 18 is 32.
+      Final answer: 32
+
+      Solve the next problem with concise reasoning. End with a line exactly:
+      Final answer: <number>
+
+      Question: {question}
+    checksum: 365309e799b08fdc75849a9d2b95a60a0a0706ba0e9a58e0ae283a6917377822
+  reasoning:
+    template_id: reasoning_answer_only_1
+    text: |-
+      Solve the problem and provide only the final answer.
+
+      Question: {question}
+      Answer:
+    checksum: b8296f6d245e663a11f4e748fe87117b54030242757c5c616dd6302f28440d1b
+  knowledge:
+    template_id: knowledge_concise_1
+    text: |-
+      Answer the factual question concisely.
+
+      Question: {question}
+      Answer:
+    checksum: dcc536dd57bd5cb4bdf152e00cbc1b2beffc75246b8bb1d37a57481aa0b07df1
+  triviaqa:
+    template_id: triviaqa_five_shot_short_v1
+    text: |
+      Give only the shortest factual answer.
+
+      Question: What planet is known as the Red Planet?
+      Answer: Mars
+
+      Question: Who wrote Pride and Prejudice?
+      Answer: Jane Austen
+
+      Question: What is the capital of Japan?
+      Answer: Tokyo
+
+      Question: Which element has the symbol Ag?
+      Answer: Silver
+
+      Question: In which year did World War II end?
+      Answer: 1945
+
+      Question: {question}
+      Answer:
+    checksum: 7982d87fd0c019ec5d58256ba4ff00f5e005c81275d80ae661212e4680c0d59e
+  ambiguity:
+    template_id: ambignq_numbered_v3
+    text: |
+      The question may have more than one reasonable interpretation.
+      Identify the major interpretations intended by the question.
+      For each interpretation, provide one brief factual answer.
+      Use exactly:
+      Interpretation 1: <brief interpretation>
+      Answer 1: <brief answer>
+      Add numbered interpretations only when necessary.
+      Do not explain or speculate.
+
+      Question:
+      {question}
+    checksum: 052ab576788bedb025e01110ef4b58a096574ad834a5d0fc730d208c39ef39df
+  context_grounded:
+    template_id: squad_strict_concise_v2
+    text: |
+      Answer the question using only the provided context.
+      Return only one short answer phrase.
+      Do not explain your reasoning.
+      Do not write a sentence unless the answer itself requires one.
+      If the context does not contain the answer, return exactly:
+      UNANSWERABLE
+
+      Context:
+      {context}
+
+      Question:
+      {question}
+
+      Answer:
+    checksum: a1c5468a17869058addcd4d447c6d464605d18a1967aa5757d9bb0f36d11821d
