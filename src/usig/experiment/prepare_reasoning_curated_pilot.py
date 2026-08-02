@@ -388,13 +388,19 @@ def transform_record(
     group_id = f"reasoning_{group_index:04d}"
 
     instruction = (
-        "Solve the arithmetic problem. Return only the final numeric answer."
+        "Solve the arithmetic problem. "
+        "Do not show intermediate work. "
+        "Output exactly: FINAL: <number>"
     )
 
-    original_prompt = f"{instruction}\n{question} ="
+    original_prompt = (
+        f"{instruction}\n"
+        f"{question} ="
+    )
     resolved_prompt = (
         f"{instruction}\n"
-        f"Use this reasoning scaffold: {reasoning_scaffold(record)}\n"
+        "Use the following strategy internally before answering:\n"
+        f"{reasoning_scaffold(record)}\n"
         f"{question} ="
     )
     control_prompt = (

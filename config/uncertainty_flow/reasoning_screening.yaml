@@ -1,0 +1,29 @@
+experiment:
+  name: reasoning_intervention_screening
+  version: pilot_v1
+  seed: 2026
+
+model:
+  model_id: Qwen/Qwen2.5-7B-Instruct
+  dtype: bfloat16
+  device_map: auto
+  trust_remote_code: false
+
+generation:
+  max_new_tokens: 96
+  do_sample: false
+  temperature: null
+  top_p: null
+  use_cache: true
+
+input:
+  curated_groups: data/uncertainty_flow/pilot_v1/curated/reasoning_groups.jsonl
+
+output:
+  records: outputs/uncertainty_flow/pilot_v1/screening/reasoning_screening.jsonl
+  summary: outputs/uncertainty_flow/pilot_v1/screening/reasoning_screening_summary.json
+
+screening:
+  minimum_probability_gain: 0.05
+  minimum_log_probability_gain: 0.10
+  reject_if_original_correct_and_mean_probability_at_least: 0.90
