@@ -1,4 +1,4 @@
-"""Select and transform real IFI-ARITH records for the reasoning dry pilot."""
+"""Prepare diverse IFI-ARITH candidates for reasoning-intervention screening."""
 
 from __future__ import annotations
 
@@ -6,15 +6,20 @@ import argparse
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Mapping
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
-DEFAULT_INPUTS = (
-    PROJECT_ROOT / "data/normalized/ifi_arith/larger_integer.jsonl",
-    PROJECT_ROOT / "data/normalized/ifi_arith/moderate_multiplicative.jsonl",
-)
+INPUT_PATHS = {
+    "larger_integer": (
+        PROJECT_ROOT / "data/normalized/ifi_arith/larger_integer.jsonl"
+    ),
+    "moderate_multiplicative": (
+        PROJECT_ROOT
+        / "data/normalized/ifi_arith/moderate_multiplicative.jsonl"
+    ),
+}
 
 DEFAULT_OUTPUT = (
     PROJECT_ROOT
@@ -27,55 +32,55 @@ DEFAULT_AUDIT = (
     "reasoning_candidate_audit.json"
 )
 
-TARGET_OPERATION_COUNTS = {
-    "addition": 3,
-    "subtraction": 2,
-    "multiplication": 3,
-    "division": 2,
-}
+# Explicit quotas prevent one source domain from dominating the pilot.
+SELECTION_QUOTAS: tuple[tuple[str, str, int], ...] = (
+    ("larger_integer", "addition", 2),
+    ("larger_integer", "subtraction", 2),
+    ("larger_integer", "division", 1),
+    ("moderate_multiplicative", "multiplication", 3),
+    ("moderate_multiplicative", "division", 2),
+)
+
+EXPECTED_TOTAL = sum(count for _, _, count in SELECTION_QUOTAS)
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
-    """Load JSON objects from a JSONL file."""
-
     records: list[dict[str, Any]] = []
 
     with path.open("r", encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, start=1):
-            stripped = line.strip()
-            if not stripped:
+            if not line.strip():
                 continue
 
-            payload = json.loads(stripped)
+            payload = json.loads(line)
             if not isinstance(payload, dict):
                 raise ValueError(
                     f"{path}:{line_number} must contain a JSON object"
                 )
 
+            validate_source_record(payload)
             records.append(payload)
 
     return records
 
 
-def validate_source_record(record: dict[str, Any]) -> None:
-    """Validate fields required by the reasoning transformation."""
-
+def validate_source_record(record: Mapping[str, Any]) -> None:
     required = {
         "example_id",
-        "dataset",
         "domain",
         "question",
         "reference_answers",
         "metadata",
     }
     missing = sorted(required.difference(record))
+
     if missing:
         raise ValueError(
-            f"source record is missing fields: {', '.join(missing)}"
+            "source record is missing fields: " + ", ".join(missing)
         )
 
     metadata = record["metadata"]
-    if not isinstance(metadata, dict):
+    if not isinstance(metadata, Mapping):
         raise ValueError("source metadata must be a mapping")
 
     required_metadata = {
@@ -86,6 +91,7 @@ def validate_source_record(record: dict[str, Any]) -> None:
         "expected_answer",
     }
     missing_metadata = sorted(required_metadata.difference(metadata))
+
     if missing_metadata:
         raise ValueError(
             "source metadata is missing fields: "
@@ -97,73 +103,172 @@ def validate_source_record(record: dict[str, Any]) -> None:
         raise ValueError("source record must provide reference_answers")
 
 
-def difficulty_key(record: dict[str, Any]) -> tuple[int, int, str]:
-    """Prefer examples with larger operands and more digits."""
+def count_digits(value: int) -> int:
+    return len(str(abs(value)))
+
+
+def repeated_digit_ratio(value: int) -> float:
+    digits = str(abs(value))
+    if not digits:
+        return 0.0
+
+    most_common = Counter(digits).most_common(1)[0][1]
+    return most_common / len(digits)
+
+
+def triviality_reasons(record: Mapping[str, Any]) -> list[str]:
+    """Identify arithmetic patterns unsuitable for uncertainty screening."""
+
+    metadata = record["metadata"]
+    operation = str(metadata["operation"])
+    operand_a = abs(int(metadata["operand_a"]))
+    operand_b = abs(int(metadata["operand_b"]))
+    answer = abs(int(metadata["expected_answer"]))
+
+    reasons: list[str] = []
+
+    convenient_values = {
+        0,
+        1,
+        2,
+        5,
+        10,
+        20,
+        25,
+        50,
+        100,
+        200,
+        500,
+        999,
+        1000,
+        9999,
+        10000,
+    }
+
+    if operation == "multiplication":
+        if operand_a in convenient_values or operand_b in convenient_values:
+            reasons.append("convenient_multiplier")
+
+        if operand_a % 10 == 0 or operand_b % 10 == 0:
+            reasons.append("round_multiplier")
+
+    if operation == "subtraction":
+        if answer < 100:
+            reasons.append("small_difference")
+
+        if operand_a - operand_b in {1, 10, 100, 1000}:
+            reasons.append("obvious_difference")
+
+    if operation == "division":
+        if operand_b in convenient_values:
+            reasons.append("convenient_divisor")
+
+        if operand_a % 1000 == 0:
+            reasons.append("round_dividend")
+
+        quotient = operand_a // operand_b if operand_b else 0
+        if quotient in convenient_values:
+            reasons.append("convenient_quotient")
+
+    if operation == "addition":
+        if operand_a % 1000 == 0 or operand_b % 1000 == 0:
+            reasons.append("round_addend")
+
+        if answer % 1000 == 0:
+            reasons.append("round_sum")
+
+    return sorted(set(reasons))
+
+
+def difficulty_score(record: Mapping[str, Any]) -> tuple[int, int, int, str]:
+    """Rank candidates using digit demand and nontrivial digit structure."""
 
     metadata = record["metadata"]
     operand_a = abs(int(metadata["operand_a"]))
     operand_b = abs(int(metadata["operand_b"]))
+    answer = abs(int(metadata["expected_answer"]))
 
-    digit_count = len(str(operand_a)) + len(str(operand_b))
-    magnitude = max(operand_a, operand_b)
+    total_digits = (
+        count_digits(operand_a)
+        + count_digits(operand_b)
+        + count_digits(answer)
+    )
 
-    return (-digit_count, -magnitude, str(record["example_id"]))
+    nonzero_digits = sum(
+        digit != "0"
+        for digit in f"{operand_a}{operand_b}{answer}"
+    )
+
+    digit_diversity = (
+        len(set(str(operand_a)))
+        + len(set(str(operand_b)))
+        + len(set(str(answer)))
+    )
+
+    return (
+        -total_digits,
+        -nonzero_digits,
+        -digit_diversity,
+        str(record["example_id"]),
+    )
 
 
-def reasoning_scaffold(
-    operation: str,
-    operand_a: int,
-    operand_b: int,
-) -> str:
-    """Return an operation-specific scaffold without revealing the answer."""
+def reasoning_scaffold(record: Mapping[str, Any]) -> str:
+    """Construct an answer-free, instance-aware reasoning intervention."""
+
+    metadata = record["metadata"]
+    operation = str(metadata["operation"])
+    operand_a = int(metadata["operand_a"])
+    operand_b = int(metadata["operand_b"])
 
     if operation == "addition":
         return (
-            "Work column by column from right to left. Track every carry, "
-            "then combine the resulting place values."
+            f"Split {operand_a} and {operand_b} into thousands, hundreds, "
+            "tens, and ones. Add matching place values from right to left, "
+            "record every carry, and then combine the resulting place values."
         )
 
     if operation == "subtraction":
         return (
-            "Work column by column from right to left. Borrow where needed "
-            "and verify the result by adding it back to the smaller term."
+            f"Align {operand_a} and {operand_b} by place value. Subtract from "
+            "right to left, explicitly borrowing whenever the upper digit is "
+            "smaller. Verify the result by adding it to the subtracted value."
         )
 
     if operation == "multiplication":
         return (
-            f"Decompose {operand_b} into place values. Multiply "
-            f"{operand_a} by each part separately, then add the partial "
-            "products."
+            f"Write {operand_b} as hundreds plus tens plus ones. Multiply "
+            f"{operand_a} by each nonzero place-value component separately, "
+            "shift each partial product correctly, and add the partial products."
         )
 
     if operation == "division":
         return (
-            "Find the integer quotient by checking how many equal groups fit. "
-            "Verify it by multiplying the proposed quotient by the divisor."
+            f"Estimate how many times {operand_b} fits into {operand_a} using "
+            "the leading digits. Multiply the candidate quotient by the divisor "
+            "and adjust it until the product exactly matches the dividend."
         )
 
     raise ValueError(f"unsupported operation: {operation}")
 
 
 def irrelevant_instruction(operation: str) -> str:
-    """Return a matched but non-resolving control instruction."""
-
     controls = {
         "addition": (
-            "Arithmetic symbols have been used in written mathematics for "
-            "centuries. Read the expression carefully before responding."
+            "Addition is represented by a plus sign in modern mathematical "
+            "notation. Read the full expression before returning an answer."
         ),
         "subtraction": (
-            "Subtraction is commonly represented by a horizontal minus sign. "
-            "Read the expression carefully before responding."
+            "Subtraction is represented by a minus sign in modern mathematical "
+            "notation. Read the full expression before returning an answer."
         ),
         "multiplication": (
-            "Multiplication may be represented by a cross, dot, or adjacency. "
-            "Read the expression carefully before responding."
+            "Multiplication can be represented by a cross, dot, or adjacency. "
+            "Read the full expression before returning an answer."
         ),
         "division": (
-            "Division may be represented by a slash or division symbol. "
-            "Read the expression carefully before responding."
+            "Division can be represented by a slash or division symbol. "
+            "Read the full expression before returning an answer."
         ),
     }
 
@@ -174,76 +279,127 @@ def irrelevant_instruction(operation: str) -> str:
 
 
 def select_candidates(
-    records: Iterable[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    """Select exactly ten operation-balanced deterministic candidates."""
+    records_by_domain: Mapping[str, Iterable[dict[str, Any]]],
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Select quota-constrained candidates with globally unique answers."""
 
-    buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    buckets: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    rejection_counts: Counter[str] = Counter()
+    eligible_counts: Counter[str] = Counter()
 
-    for record in records:
-        validate_source_record(record)
-        operation = str(record["metadata"]["operation"])
+    for expected_domain, records in records_by_domain.items():
+        for record in records:
+            domain = str(record["domain"])
+            operation = str(record["metadata"]["operation"])
 
-        if operation in TARGET_OPERATION_COUNTS:
-            buckets[operation].append(record)
+            if domain != expected_domain:
+                raise ValueError(
+                    f"record domain {domain!r} does not match source "
+                    f"{expected_domain!r}"
+                )
+
+            reasons = triviality_reasons(record)
+            if reasons:
+                rejection_counts.update(reasons)
+                continue
+
+            buckets[(domain, operation)].append(record)
+            eligible_counts[f"{domain}:{operation}"] += 1
 
     selected: list[dict[str, Any]] = []
+    used_answers: set[str] = set()
+    duplicate_answer_skips: Counter[str] = Counter()
 
-    for operation, target_count in TARGET_OPERATION_COUNTS.items():
-        ordered = sorted(buckets[operation], key=difficulty_key)
+    for domain, operation, required_count in SELECTION_QUOTAS:
+        candidates = sorted(
+            buckets[(domain, operation)],
+            key=difficulty_score,
+        )
 
-        if len(ordered) < target_count:
+        quota_selected: list[dict[str, Any]] = []
+
+        for candidate in candidates:
+            answer = str(candidate["metadata"]["expected_answer"])
+
+            if answer in used_answers:
+                duplicate_answer_skips[f"{domain}:{operation}"] += 1
+                continue
+
+            quota_selected.append(candidate)
+            used_answers.add(answer)
+
+            if len(quota_selected) == required_count:
+                break
+
+        if len(quota_selected) < required_count:
             raise ValueError(
-                f"operation {operation!r} has only {len(ordered)} eligible "
-                f"records; {target_count} are required"
+                f"{domain}:{operation} produced only "
+                f"{len(quota_selected)} unique-answer candidates after "
+                f"filtering; {required_count} are required"
             )
 
-        selected.extend(ordered[:target_count])
+        selected.extend(quota_selected)
 
-    return sorted(
+    selected = sorted(
         selected,
         key=lambda record: (
+            str(record["domain"]),
             str(record["metadata"]["operation"]),
             str(record["example_id"]),
         ),
     )
 
+    answers = [
+        str(record["metadata"]["expected_answer"])
+        for record in selected
+    ]
+
+    if len(answers) != len(set(answers)):
+        raise RuntimeError(
+            "internal error: selected candidates contain duplicate answers"
+        )
+
+    audit = {
+        "eligible_counts": dict(sorted(eligible_counts.items())),
+        "rejection_counts": dict(sorted(rejection_counts.items())),
+        "duplicate_answer_skips": dict(
+            sorted(duplicate_answer_skips.items())
+        ),
+        "selection_quotas": [
+            {
+                "domain": domain,
+                "operation": operation,
+                "count": count,
+            }
+            for domain, operation, count in SELECTION_QUOTAS
+        ],
+    }
+
+    return selected, audit
 
 def transform_record(
-    record: dict[str, Any],
+    record: Mapping[str, Any],
     *,
     group_index: int,
 ) -> dict[str, Any]:
-    """Convert one normalized IFI-ARITH record into a curated group."""
-
     metadata = record["metadata"]
     operation = str(metadata["operation"])
-    operand_a = int(metadata["operand_a"])
-    operand_b = int(metadata["operand_b"])
     question = str(record["question"])
-    source_prompt = (
+    group_id = f"reasoning_{group_index:04d}"
+
+    instruction = (
         "Solve the arithmetic problem. Return only the final numeric answer."
     )
 
-    group_id = f"reasoning_{group_index:04d}"
-
-    original_prompt = f"{source_prompt}\n{question} ="
-
-    scaffold = reasoning_scaffold(
-        operation=operation,
-        operand_a=operand_a,
-        operand_b=operand_b,
-    )
+    original_prompt = f"{instruction}\n{question} ="
     resolved_prompt = (
-        f"{source_prompt}\n"
-        f"Use this reasoning scaffold: {scaffold}\n"
+        f"{instruction}\n"
+        f"Use this reasoning scaffold: {reasoning_scaffold(record)}\n"
         f"{question} ="
     )
-
-    control = irrelevant_instruction(operation)
     control_prompt = (
-        f"{source_prompt}\n"
-        f"Additional information: {control}\n"
+        f"{instruction}\n"
+        f"Additional information: {irrelevant_instruction(operation)}\n"
         f"{question} ="
     )
 
@@ -281,8 +437,8 @@ def transform_record(
             "control_non_resolving": True,
             "review_status": "pending",
             "notes": (
-                "Automatically selected from IFI-ARITH. Manual review "
-                "required before approval."
+                "Selected with domain-operation quotas and trivial-pattern "
+                "filters. Model screening is required before approval."
             ),
         },
         "provenance": {
@@ -291,19 +447,19 @@ def transform_record(
             "domain": str(record["domain"]),
             "operation": operation,
             "expression": str(metadata["expression"]),
-            "operand_a": operand_a,
-            "operand_b": operand_b,
-            "expected_answer": metadata["expected_answer"],
+            "operand_a": int(metadata["operand_a"]),
+            "operand_b": int(metadata["operand_b"]),
+            "expected_answer": int(metadata["expected_answer"]),
             "normalized_question_hash": str(
                 metadata.get("normalized_question_hash", "")
             ),
+            "selection_score": list(difficulty_score(record)[:-1]),
+            "triviality_reasons": triviality_reasons(record),
         },
     }
 
 
 def write_jsonl(path: Path, payloads: Iterable[dict[str, Any]]) -> None:
-    """Write JSONL atomically."""
-
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
 
@@ -317,9 +473,7 @@ def write_jsonl(path: Path, payloads: Iterable[dict[str, Any]]) -> None:
     temporary.replace(path)
 
 
-def write_json(path: Path, payload: dict[str, Any]) -> None:
-    """Write JSON atomically."""
-
+def write_json(path: Path, payload: Mapping[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(
@@ -331,24 +485,29 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def prepare(
     *,
-    input_paths: tuple[Path, ...],
+    input_paths: Mapping[str, Path],
     output_path: Path,
     audit_path: Path,
     overwrite: bool,
 ) -> None:
-    """Prepare ten real IFI-ARITH reasoning groups."""
-
     for path in (output_path, audit_path):
         if path.exists() and not overwrite:
             raise FileExistsError(
                 f"refusing to overwrite existing artifact: {path}"
             )
 
-    records: list[dict[str, Any]] = []
-    for path in input_paths:
-        records.extend(load_jsonl(path))
+    records_by_domain = {
+        domain: load_jsonl(path)
+        for domain, path in input_paths.items()
+    }
 
-    selected = select_candidates(records)
+    selected, selection_audit = select_candidates(records_by_domain)
+
+    if len(selected) != EXPECTED_TOTAL:
+        raise RuntimeError(
+            f"expected {EXPECTED_TOTAL} selected records, got {len(selected)}"
+        )
+
     groups = [
         transform_record(record, group_index=index)
         for index, record in enumerate(selected)
@@ -356,11 +515,11 @@ def prepare(
 
     write_jsonl(output_path, groups)
 
-    operation_counts = Counter(
-        group["provenance"]["operation"] for group in groups
-    )
     domain_counts = Counter(
         group["provenance"]["domain"] for group in groups
+    )
+    operation_counts = Counter(
+        group["provenance"]["operation"] for group in groups
     )
 
     write_json(
@@ -368,23 +527,28 @@ def prepare(
         {
             "group_count": len(groups),
             "record_count_after_expansion": len(groups) * 3,
-            "operation_counts": dict(sorted(operation_counts.items())),
             "domain_counts": dict(sorted(domain_counts.items())),
+            "operation_counts": dict(sorted(operation_counts.items())),
             "review_status_counts": {
                 "pending": len(groups),
                 "approved": 0,
                 "rejected": 0,
             },
             "manual_review_required": True,
+            "model_screening_required": True,
             "output_path": str(output_path),
-            "source_paths": [str(path) for path in input_paths],
+            "source_paths": {
+                domain: str(path)
+                for domain, path in input_paths.items()
+            },
+            **selection_audit,
         },
     )
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Prepare real IFI-ARITH reasoning pilot groups."
+        description="Prepare diverse reasoning-intervention candidates."
     )
     parser.add_argument(
         "--output",
@@ -407,7 +571,7 @@ def main() -> None:
     arguments = build_parser().parse_args()
 
     prepare(
-        input_paths=DEFAULT_INPUTS,
+        input_paths=INPUT_PATHS,
         output_path=arguments.output,
         audit_path=arguments.audit_output,
         overwrite=arguments.overwrite,
