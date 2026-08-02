@@ -1,0 +1,56 @@
+experiment:
+  name: reasoning_candidate_discovery
+  version: pilot_v1
+  seed: 2026
+
+model:
+  model_id: Qwen/Qwen2.5-7B-Instruct
+  dtype: bfloat16
+  device_map: auto
+  trust_remote_code: false
+
+generation:
+  max_new_tokens: 32
+  do_sample: false
+  use_cache: true
+
+input:
+  larger_integer: data/normalized/ifi_arith/larger_integer.jsonl
+  moderate_multiplicative: data/normalized/ifi_arith/moderate_multiplicative.jsonl
+
+sampling:
+  quotas:
+    - domain: larger_integer
+      operation: addition
+      count: 40
+
+    - domain: larger_integer
+      operation: subtraction
+      count: 40
+
+    - domain: larger_integer
+      operation: multiplication
+      count: 40
+
+    - domain: larger_integer
+      operation: division
+      count: 40
+
+    - domain: moderate_multiplicative
+      operation: multiplication
+      count: 40
+
+    - domain: moderate_multiplicative
+      operation: division
+      count: 40
+
+selection:
+  shortlist_size: 60
+  minimum_per_bucket: 5
+  maximum_per_bucket: 15
+  low_gold_probability_threshold: 0.80
+
+output:
+  records: outputs/uncertainty_flow/pilot_v1/discovery/reasoning_original_screening.jsonl
+  shortlist: outputs/uncertainty_flow/pilot_v1/discovery/reasoning_shortlist.jsonl
+  summary: outputs/uncertainty_flow/pilot_v1/discovery/reasoning_discovery_summary.json
