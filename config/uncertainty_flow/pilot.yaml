@@ -1,0 +1,100 @@
+project:
+  name: uncertainty_flow
+  version: pilot_v1
+  seed: 2026
+
+research_question: >-
+  Can internal feature dynamics distinguish different sources of uncertainty
+  and predict which intervention will resolve them?
+
+sources:
+  low_uncertainty:
+    canonical_action: answer
+
+  knowledge:
+    canonical_action: retrieve
+    dry_pilot_groups: 10
+    expanded_pilot_groups: 200
+
+  ambiguity:
+    canonical_action: clarify
+    dry_pilot_groups: 10
+    expanded_pilot_groups: 200
+
+  reasoning:
+    canonical_action: reason_more
+    dry_pilot_groups: 10
+    expanded_pilot_groups: 200
+
+variants:
+  required:
+    - original
+    - resolved
+    - irrelevant_control
+
+  optional:
+    - adversarial_control
+    - alternative_interpretation
+
+datasets:
+  knowledge:
+    - triviaqa
+    - nqopen
+
+  ambiguity:
+    - ambignq
+    - controlled_nq_rewrites
+
+  reasoning:
+    - ifi_arith
+    - gsm8k
+
+splitting:
+  unit: group_id
+  train_fraction: 0.60
+  validation_fraction: 0.20
+  test_fraction: 0.20
+  keep_counterfactual_groups_intact: true
+
+model:
+  model_id: Qwen/Qwen2.5-7B-Instruct
+  dtype: bfloat16
+  decoding: greedy
+  max_new_tokens: 256
+
+features:
+  probability_and_length: true
+  token_dynamics: true
+  depth_dynamics: true
+  query_stage: true
+  generation_stage: true
+
+evaluation:
+  source_metrics:
+    - macro_f1
+    - balanced_accuracy
+    - classwise_f1
+    - one_vs_rest_auroc
+    - confusion_matrix
+
+  uncertainty_metrics:
+    - auroc
+    - auprc
+    - brier
+    - ece
+    - risk_coverage
+
+  routing_metrics:
+    - action_accuracy
+    - final_accuracy
+    - unnecessary_intervention_rate
+    - unresolved_failure_rate
+    - average_generated_tokens
+    - cost_adjusted_utility
+
+go_no_go:
+  minimum_macro_f1_gain_over_probability_length: 0.08
+  require_cross_dataset_transfer: true
+  require_correct_intervention_ordering: true
+  require_internal_feature_gain: true
+  require_routing_utility_gain: true
